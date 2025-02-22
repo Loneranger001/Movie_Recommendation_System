@@ -74,7 +74,7 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F122F8E4BB6C42889294D8C1EEFC076F }}
       # NEW STARTUP COMMAND CONFIGURATION
       - name: Configure startup command
-        uses: azure/appservice-settings@v2
+        uses: azure/appservice-settings@v1
         with:
           app-name: 'mrwebapp'
           slot-name: 'Production'
