@@ -72,7 +72,13 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_3008580BD37E4C778003B072D2F58624 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_098120D912AF4DF298C11CD0B13FDE4F }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F122F8E4BB6C42889294D8C1EEFC076F }}
-
+      # NEW STARTUP COMMAND CONFIGURATION
+      - name: Configure startup command
+        uses: azure/appservice-settings@v2
+        with:
+          app-name: 'mrwebapp'
+          slot-name: 'Production'
+          general-settings-json: '{ "startupCommand": "bash startup.sh" }'
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
