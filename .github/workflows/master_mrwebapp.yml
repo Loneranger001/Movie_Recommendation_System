@@ -35,7 +35,8 @@ jobs:
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip -r release.zip ./*
+        # run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
@@ -61,8 +62,8 @@ jobs:
         with:
           name: python-app
 
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
+      # - name: Unzip artifact for deployment
+      #   run: unzip release.zip
 
       
       - name: Login to Azure
@@ -78,4 +79,5 @@ jobs:
         with:
           app-name: 'mrwebapp'
           slot-name: 'Production'
+          package: release.zip
           
